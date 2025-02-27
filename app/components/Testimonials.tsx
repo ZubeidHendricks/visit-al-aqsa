@@ -41,7 +41,7 @@ export default function Testimonials() {
               </div>
               
               <p className="text-gray-600 italic mb-6 text-center">
-                "{testimonial.content}"
+                &ldquo;{testimonial.content}&rdquo;
               </p>
               
               <div className="text-center">
