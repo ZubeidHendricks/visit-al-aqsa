@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Footer() {
   return (
     <footer className="bg-green-900 text-white py-12">
@@ -16,29 +18,29 @@ export default function Footer() {
             <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="/" className="text-green-100 hover:text-white transition duration-300">
+                <Link href="/" className="text-green-100 hover:text-white transition duration-300">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/how-it-works" className="text-green-100 hover:text-white transition duration-300">
+                <Link href="/how-it-works" className="text-green-100 hover:text-white transition duration-300">
                   How It Works
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/contribute" className="text-green-100 hover:text-white transition duration-300">
+                <Link href="/contribute" className="text-green-100 hover:text-white transition duration-300">
                   Contribute
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/apply" className="text-green-100 hover:text-white transition duration-300">
+                <Link href="/apply" className="text-green-100 hover:text-white transition duration-300">
                   Apply
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/testimonials" className="text-green-100 hover:text-white transition duration-300">
+                <Link href="/testimonials" className="text-green-100 hover:text-white transition duration-300">
                   Testimonials
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -61,12 +63,12 @@ export default function Footer() {
           </p>
           
           <div className="mt-4 md:mt-0 flex space-x-4">
-            <a href="/terms" className="text-green-200 text-sm hover:text-white transition duration-300">
+            <Link href="/terms" className="text-green-200 text-sm hover:text-white transition duration-300">
               Terms of Service
-            </a>
-            <a href="/privacy" className="text-green-200 text-sm hover:text-white transition duration-300">
+            </Link>
+            <Link href="/privacy" className="text-green-200 text-sm hover:text-white transition duration-300">
               Privacy Policy
-            </a>
+            </Link>
           </div>
         </div>
       </div>
