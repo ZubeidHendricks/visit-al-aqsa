@@ -6,6 +6,7 @@ import { sql } from './db';
 import type { User } from 'next-auth';
 import bcrypt from 'bcryptjs';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 // Define a custom user type that includes additional fields
 interface DbUser extends User {
   id: string;
