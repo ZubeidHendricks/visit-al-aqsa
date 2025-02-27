@@ -1,8 +1,10 @@
 import NextAuth from 'next-auth';
 import Google from 'next-auth/providers/google';
 import Facebook from 'next-auth/providers/facebook';
+import CredentialsProvider from 'next-auth/providers/credentials';
 import { sql } from './db';
 import type { User } from 'next-auth';
+import bcrypt from 'bcryptjs';
 
 // Define a custom user type that includes additional fields
 interface DbUser extends User {
@@ -26,6 +28,74 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     // Instagram and WhatsApp are typically managed through the Facebook developer console
     // There's no direct provider for WhatsApp in NextAuth
     // For Instagram, we could potentially use a custom provider, but it requires more complex setup
+    
+    // Credentials provider for email/password login
+    CredentialsProvider({
+      name: 'Credentials',
+      credentials: {
+        email: { label: "Email", type: "text" },
+        password: { label: "Password", type: "password" }
+      },
+      async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password) {
+          return null;
+        }
+        
+        try {
+          // Find the user in the database
+          const users = await sql`
+            SELECT user_id, full_name, email, password_hash, is_admin 
+            FROM users 
+            WHERE email = ${credentials.email}
+          `;
+          
+          if (users.length === 0) {
+            return null;
+          }
+          
+          const user = users[0];
+          
+          // Check if this is an OAuth user without a password
+          if (user.password_hash === 'oauth_user') {
+            console.error('OAuth user attempting password login:', credentials.email);
+            return null;
+          }
+          
+          // Verify the password
+          const isValid = await bcrypt.compare(credentials.password, user.password_hash);
+          
+          if (!isValid) {
+            return null;
+          }
+          
+          // Log the successful login
+          await sql`
+            INSERT INTO user_activities (
+              user_id,
+              activity_type,
+              description,
+              created_at
+            ) VALUES (
+              ${user.user_id},
+              'login',
+              ${'User logged in with credentials'},
+              NOW()
+            )
+          `;
+          
+          // Return the user object
+          return {
+            id: user.user_id.toString(),
+            name: user.full_name,
+            email: user.email,
+            role: user.is_admin ? 'admin' : 'user'
+          };
+        } catch (error) {
+          console.error('Error during credentials authentication:', error);
+          return null;
+        }
+      }
+    }),
   ],
   callbacks: {
     async jwt({ token, user, account }) {
@@ -36,6 +106,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         
         // Add custom fields to the token
         token.provider = account.provider;
+        
+        // If user has a role, add it to the token
+        if ('role' in user) {
+          token.role = user.role;
+        }
       }
       return token;
     },
@@ -43,7 +118,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       // Add custom fields to the session
       if (session.user && token.sub) {
         session.user.id = token.sub;
-        // You could add more fields from your database here
+        
+        // Add role to the session if it exists in the token
+        if ('role' in token) {
+          session.user.role = token.role as string;
+        }
       }
       return session;
     },
