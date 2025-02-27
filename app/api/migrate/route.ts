@@ -29,7 +29,7 @@ export async function GET() {
     // Execute each statement separately
     for (const statement of statements) {
       try {
-        const result = await client(`${statement};`);
+        await client(`${statement};`);
         results.push({ success: true, statement: statement.substring(0, 50) + '...' });
       } catch (statementError) {
         console.error(`Error executing statement: ${statement.substring(0, 100)}...`);
