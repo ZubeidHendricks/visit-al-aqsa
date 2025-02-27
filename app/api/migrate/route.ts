@@ -14,10 +14,10 @@ export async function GET() {
     
     // Read the schema file
     const schemaPath = path.join(process.cwd(), 'db', 'schema.sql');
-    let schemaSQL = fs.readFileSync(schemaPath, 'utf8');
+    const schemaSQL = fs.readFileSync(schemaPath, 'utf8');
     
     // Execute the schema SQL directly
-    const result = await client(schemaSQL);
+    await client(schemaSQL);
     
     return NextResponse.json({ success: true, message: 'Migration completed successfully' });
   } catch (error) {
