@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import PaymentForm from '@/app/components/PaymentForm';
 
 export const metadata = {
   title: 'Single Contribution - Visit Al Aqsa',
@@ -17,142 +17,11 @@ export default function SingleContributionPage() {
         </div>
         
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <div className="flex justify-between items-center p-4 bg-green-50 rounded-lg mb-6">
-            <div>
-              <h2 className="font-semibold text-green-800">Contribution Amount</h2>
-              <p className="text-gray-600">One-time payment</p>
-            </div>
-            <div className="text-2xl font-bold text-green-600">R300</div>
-          </div>
-          
-          <form className="space-y-6">
-            {/* Personal Information */}
-            <div>
-              <h3 className="text-lg font-medium text-green-700 mb-4">Personal Information</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
-                  <input 
-                    type="text" 
-                    id="firstName" 
-                    name="firstName" 
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
-                  <input 
-                    type="text" 
-                    id="lastName" 
-                    name="lastName" 
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    name="email" 
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                  <input 
-                    type="tel" 
-                    id="phone" 
-                    name="phone" 
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-            
-            {/* Payment Information */}
-            <div>
-              <h3 className="text-lg font-medium text-green-700 mb-4">Payment Information</h3>
-              <div className="space-y-4">
-                <div>
-                  <label htmlFor="cardNumber" className="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
-                  <input 
-                    type="text" 
-                    id="cardNumber" 
-                    name="cardNumber" 
-                    placeholder="1234 5678 9012 3456" 
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
-                    required
-                  />
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="md:col-span-2">
-                    <label htmlFor="expiryDate" className="block text-sm font-medium text-gray-700 mb-1">Expiry Date (MM/YY)</label>
-                    <input 
-                      type="text" 
-                      id="expiryDate" 
-                      name="expiryDate" 
-                      placeholder="MM/YY" 
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="cvv" className="block text-sm font-medium text-gray-700 mb-1">CVV</label>
-                    <input 
-                      type="text" 
-                      id="cvv" 
-                      name="cvv" 
-                      placeholder="123" 
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
-                      required
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor="cardName" className="block text-sm font-medium text-gray-700 mb-1">Name on Card</label>
-                  <input 
-                    type="text" 
-                    id="cardName" 
-                    name="cardName" 
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-            
-            {/* Terms & Conditions */}
-            <div className="flex items-start">
-              <div className="flex items-center h-5">
-                <input
-                  id="terms"
-                  name="terms"
-                  type="checkbox"
-                  className="h-4 w-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
-                  required
-                />
-              </div>
-              <div className="ml-3 text-sm">
-                <label htmlFor="terms" className="font-medium text-gray-700">
-                  I agree to the <Link href="/terms" className="text-green-600 hover:text-green-800">Terms and Conditions</Link> and <Link href="/privacy" className="text-green-600 hover:text-green-800">Privacy Policy</Link>
-                </label>
-              </div>
-            </div>
-            
-            {/* Submit Button */}
-            <div className="pt-4">
-              <button
-                type="submit"
-                className="w-full py-3 px-4 bg-green-600 text-white font-medium rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition duration-300"
-              >
-                Contribute R300
-              </button>
-            </div>
-          </form>
+          <PaymentForm 
+            amount={300} 
+            isRecurring={false} 
+            buttonText="Contribute R300"
+          />
         </div>
         
         {/* Secure Payment Notice */}
