@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Hero() {
   return (
     <div className="bg-green-50 py-16 px-4">
@@ -15,18 +17,18 @@ export default function Hero() {
               Together, we can make these spiritual journeys possible.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a 
+              <Link 
                 href="/contribute" 
                 className="px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition duration-300"
               >
                 Contribute Now - R300
-              </a>
-              <a 
+              </Link>
+              <Link 
                 href="/apply" 
                 className="px-6 py-3 border-2 border-green-600 text-green-600 font-medium rounded-lg hover:bg-green-50 transition duration-300"
               >
                 Apply For Selection
-              </a>
+              </Link>
             </div>
           </div>
           
