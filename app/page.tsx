@@ -1,12 +1,26 @@
-import PostgresVersion from "./version";
+import Hero from './components/Hero';
+import FundingProgress from './components/FundingProgress';
+import HowItWorks from './components/HowItWorks';
+import Testimonials from './components/Testimonials';
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <main className="flex-grow flex flex-col items-center justify-center text-black dark:text-white">
-        <h1 className="font-semibold text-2xl mb-4">Vercel + Neon</h1>
-        <PostgresVersion />
-      </main>
+    <div className="flex flex-col">
+      {/* Hero section */}
+      <Hero />
+      
+      {/* Funding Progress section */}
+      <section className="py-12 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <FundingProgress />
+        </div>
+      </section>
+      
+      {/* How It Works section */}
+      <HowItWorks />
+      
+      {/* Testimonials section */}
+      <Testimonials />
     </div>
   );
 }
