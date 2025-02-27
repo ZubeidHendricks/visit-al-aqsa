@@ -1,5 +1,6 @@
 // Import will be used later when database is connected
 // import { getFundingStats } from '../db';
+import Link from 'next/link';
 
 export default async function FundingProgress() {
   // In a real application, this would fetch data from the database
@@ -79,12 +80,12 @@ export default async function FundingProgress() {
       )}
       
       <div className="mt-6 text-center">
-        <a 
+        <Link 
           href="/contribute" 
           className="inline-block px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition duration-300"
         >
           Contribute Now - R300
-        </a>
+        </Link>
       </div>
     </div>
   );
