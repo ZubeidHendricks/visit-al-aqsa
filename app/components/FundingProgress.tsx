@@ -1,4 +1,5 @@
-import { getFundingStats } from '../db';
+// Import will be used later when database is connected
+// import { getFundingStats } from '../db';
 
 export default async function FundingProgress() {
   // In a real application, this would fetch data from the database
@@ -72,7 +73,7 @@ export default async function FundingProgress() {
           </div>
           
           <p className="text-sm text-gray-600 mt-2">
-            Only {formatCurrency(mockStats.currentGoal.target_amount - mockStats.currentGoal.current_amount)} more needed to fund our next applicant's journey!
+            Only {formatCurrency(mockStats.currentGoal.target_amount - mockStats.currentGoal.current_amount)} more needed to fund our next applicant&apos;s journey!
           </p>
         </div>
       )}
