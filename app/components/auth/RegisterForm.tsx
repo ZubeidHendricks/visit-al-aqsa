@@ -64,9 +64,9 @@ export default function RegisterForm() {
         router.push('/dashboard');
         router.refresh();
       }
-    } catch (error) {
-      if (error instanceof Error) {
-        setError(error.message);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
       } else {
         setError('An error occurred during registration. Please try again.');
       }
@@ -79,7 +79,7 @@ export default function RegisterForm() {
     setIsLoading(true);
     try {
       await signIn(provider, { callbackUrl: '/dashboard' });
-    } catch (error) {
+    } catch (err) {
       setError(`An error occurred with ${provider} registration. Please try again.`);
       setIsLoading(false);
     }
