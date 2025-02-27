@@ -127,8 +127,9 @@ function validatePaymentDetails(details: PaymentDetails): { valid: boolean; erro
 /**
  * Cancel a recurring payment
  */
-export async function cancelRecurringPayment(id: string): Promise<PaymentResult> {
-  // In a real implementation, this would make an API call to cancel the subscription
+export async function cancelRecurringPayment(_id: string): Promise<PaymentResult> {
+  // In a real implementation, this would make an API call to cancel the subscription using the id
+  // For now we'll just prefix with underscore to indicate it's deliberately unused in this mock implementation
   
   // Simulate network delay
   await new Promise(resolve => setTimeout(resolve, 1000));
