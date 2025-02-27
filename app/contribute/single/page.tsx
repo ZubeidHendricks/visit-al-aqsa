@@ -12,7 +12,7 @@ export default function SingleContributionPage() {
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-green-800 mb-4">Make a Single Contribution</h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Your one-time contribution of R300 will help fund someone's journey to Al Aqsa.
+            Your one-time contribution of R300 will help fund someone&apos;s journey to Al Aqsa.
           </p>
         </div>
         
