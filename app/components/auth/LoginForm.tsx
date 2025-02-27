@@ -33,7 +33,7 @@ export default function LoginForm() {
         router.push('/dashboard');
         router.refresh();
       }
-    } catch (error) {
+    } catch (err) {
       setError('An error occurred during login. Please try again.');
       setIsLoading(false);
     }
@@ -44,7 +44,7 @@ export default function LoginForm() {
     setIsLoading(true);
     try {
       await signIn(provider, { callbackUrl: '/dashboard' });
-    } catch (error) {
+    } catch (err) {
       setError(`An error occurred with ${provider} login. Please try again.`);
       setIsLoading(false);
     }
