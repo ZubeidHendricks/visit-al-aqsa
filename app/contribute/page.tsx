@@ -100,7 +100,7 @@ export default function ContributePage() {
             </div>
             <div className="bg-white p-4 rounded-lg shadow-sm">
               <h3 className="font-medium text-green-700 mb-2">Can I contribute on behalf of someone else?</h3>
-              <p className="text-gray-600">Yes, you can contribute on behalf of someone else. Simply indicate this during the contribution process, and we'll send the acknowledgment to the person you specify.</p>
+              <p className="text-gray-600">Yes, you can contribute on behalf of someone else. Simply indicate this during the contribution process, and we&apos;ll send the acknowledgment to the person you specify.</p>
             </div>
           </div>
         </div>
@@ -115,7 +115,7 @@ export default function ContributePage() {
             </div>
             <div className="md:w-3/4">
               <p className="text-gray-600 italic mb-4">
-                &ldquo;I never thought I could afford to visit Al Aqsa, but thanks to this platform and the generosity of contributors, my dream came true. The experience was truly life-changing, and I'm forever grateful.&rdquo;
+                &ldquo;I never thought I could afford to visit Al Aqsa, but thanks to this platform and the generosity of contributors, my dream came true. The experience was truly life-changing, and I&apos;m forever grateful.&rdquo;
               </p>
               <p className="font-semibold text-green-700">Yusuf Rahman, Johannesburg</p>
             </div>
