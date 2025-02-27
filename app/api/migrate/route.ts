@@ -9,7 +9,7 @@ export async function GET() {
       throw new Error('DATABASE_URL is not defined');
     }
     
-    // Create a direct connection
+    // Create a direct connection instead of using the sql tag template
     const client = neon(process.env.DATABASE_URL);
     
     // Read the schema file
