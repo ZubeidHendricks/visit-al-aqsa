@@ -127,7 +127,6 @@ function validatePaymentDetails(details: PaymentDetails): { valid: boolean; erro
 /**
  * Cancel a recurring payment
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function cancelRecurringPayment(id: string): Promise<PaymentResult> {
   // In a real implementation, this would make an API call to cancel the subscription using the id
   // For now the parameter is unused in this mock implementation
