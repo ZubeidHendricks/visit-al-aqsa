@@ -7,6 +7,7 @@ import type { User } from 'next-auth';
 import bcrypt from 'bcryptjs';
 
 // Define a custom user type that includes additional fields
+// Use this interface in the storeUserInDb function
 interface DbUser extends User {
   id: string;
   phone?: string;
