@@ -3,7 +3,7 @@ import Google from 'next-auth/providers/google';
 import Facebook from 'next-auth/providers/facebook';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { sql } from './db';
-import type { User } from 'next-auth';
+import type { User, Session } from 'next-auth';
 import bcrypt from 'bcryptjs';
 
 // Define a custom user type that includes additional fields
@@ -12,6 +12,16 @@ interface DbUser extends User {
   id: string;
   phone?: string;
   role?: string;
+}
+
+// Extend the next-auth session type to include our custom fields
+declare module 'next-auth' {
+  interface Session {
+    user: User & {
+      id: string;
+      role?: string;
+    }
+  }
 }
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
