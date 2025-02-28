@@ -62,8 +62,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             return null;
           }
           
+          // Make sure password is a string to satisfy TypeScript
+          const password = String(credentials.password);
+          
           // Verify the password
-          const isValid = await bcrypt.compare(credentials.password, user.password_hash);
+          const isValid = await bcrypt.compare(password, user.password_hash);
           
           if (!isValid) {
             return null;
